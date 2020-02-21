@@ -35,7 +35,7 @@ include(DefineInstallationPaths)
 # Generate the SqliteOrmConfig.cmake module
 include(GenerateConfigModule)
 
-set(ProjectName "SqliteOrm")
+set(ProjectName "sqlite_orm")
 
 option(SqliteOrm_BuildTests "Build sqlite_orm unit tests" ON)
 
@@ -53,9 +53,9 @@ target_include_directories(sqlite_orm INTERFACE
 include(ucm)
 
 if (MSVC)
-	string(REGEX REPLACE "/RTC(su|[1su])" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")	
-	string(REGEX REPLACE "/RTC(su|[1su])" "" CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}")	
-	string(REGEX REPLACE "/RTC(su|[1su])" "" CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE}")	
+	string(REGEX REPLACE "/RTC(su|[1su])" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
+	string(REGEX REPLACE "/RTC(su|[1su])" "" CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}")
+	string(REGEX REPLACE "/RTC(su|[1su])" "" CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE}")
 	add_compile_options(/EHsc)
 	add_compile_options(/Zc:__cplusplus)
 
@@ -82,7 +82,7 @@ install(TARGETS sqlite_orm EXPORT "${ProjectName}Targets"
 	PUBLIC_HEADER DESTINATION "${INCLUDE_INSTALL_DIR}" COMPONENT Development)
 
 install(FILES "include/sqlite_orm/sqlite_orm.h"
-	DESTINATION "${INCLUDE_INSTALL_DIR}" COMPONENT Development)
+	DESTINATION "${INCLUDE_INSTALL_DIR}/${ProjectName}" COMPONENT Development)
 
 export(EXPORT "${ProjectName}Targets"
 	FILE "${CMAKE_CURRENT_BINARY_DIR}/${ProjectName}/${ProjectName}Targets.cmake"
