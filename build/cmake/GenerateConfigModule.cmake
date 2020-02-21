@@ -5,7 +5,7 @@ set(PACKAGE_CMAKE_INSTALL_DIR "${cmakedir}/sqlite_orm")
 
 # In CYGWIN enviroment below commands does not work properly
 if (NOT CYGWIN)
-		configure_package_config_file("${CMAKE_CURRENT_SOURCE_DIR}/build/cmake/SqliteOrmConfig.cmake.in"
+		configure_package_config_file("${CMAKE_CURRENT_SOURCE_DIR}/build/cmake/sqlite_ormConfig.cmake.in"
 						"${CMAKE_CURRENT_BINARY_DIR}/sqlite_ormConfig.cmake"
 						INSTALL_DESTINATION "${CMAKE_INSTALL_DIR}/sqlite_orm"
 						PATH_VARS

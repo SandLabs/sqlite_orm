@@ -32,14 +32,14 @@ set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${CMAKE_CURRENT_SOURCE_DIR}/build/
 # Build time options are defined here
 include(DefineInstallationPaths)
 
-# Generate the SqliteOrmConfig.cmake module
+# Generate the sqlite_ormConfig.cmake module
 include(GenerateConfigModule)
 
 set(ProjectName "sqlite_orm")
 
-option(SqliteOrm_BuildTests "Build sqlite_orm unit tests" ON)
+option(SQLITE_ORM_BUILD_TESTS "Build sqlite_orm unit tests" ON)
 
-set(SqliteOrm_INCLUDE "${CMAKE_CURRENT_SOURCE_DIR}/include")
+set(sqlite_orm_INCLUDE "${CMAKE_CURRENT_SOURCE_DIR}/include")
 add_library(sqlite_orm INTERFACE)
 
 target_sources(sqlite_orm INTERFACE
@@ -70,7 +70,7 @@ message(STATUS "CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
 
 # Tests
 include(CTest)
-if(SqliteOrm_BuildTests AND BUILD_TESTING)
+if(SQLITE_ORM_BIILD_TESTS AND BUILD_TESTING)
     enable_testing()
     add_subdirectory(tests)
 endif()
@@ -78,11 +78,11 @@ endif()
 add_subdirectory(examples)
 
 install(TARGETS sqlite_orm EXPORT "${ProjectName}Targets"
-	INCLUDES DESTINATION "${INCLUDE_INSTALL_DIR}" COMPONENT Development
-	PUBLIC_HEADER DESTINATION "${INCLUDE_INSTALL_DIR}" COMPONENT Development)
+	INCLUDES DESTINATION "${INCLUDE_INSTALL_DIR}/${ProjectName}"
+	PUBLIC_HEADER DESTINATION "${INCLUDE_INSTALL_DIR}/${ProjectName}")
 
 install(FILES "include/sqlite_orm/sqlite_orm.h"
-	DESTINATION "${INCLUDE_INSTALL_DIR}/${ProjectName}" COMPONENT Development)
+	DESTINATION "${INCLUDE_INSTALL_DIR}/${ProjectName}")
 
 export(EXPORT "${ProjectName}Targets"
 	FILE "${CMAKE_CURRENT_BINARY_DIR}/${ProjectName}/${ProjectName}Targets.cmake"

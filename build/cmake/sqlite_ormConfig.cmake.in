@@ -6,7 +6,7 @@ set_and_check(SQLITE_ORM_INCLUDE_DIR "@PACKAGE_INCLUDE_INSTALL_DIR@")
 set_and_check(SQLITE_ORM_CMAKE_DIR "@PACKAGE_CMAKE_INSTALL_DIR@")
 
 if (NOT TARGET sqlite_orm::sqlite_orm)
-  include("${SQLITE_ORM_CMAKE_DIR}/SqliteOrmTargets.cmake")
+  include("${SQLITE_ORM_CMAKE_DIR}/sqlite_ormTargets.cmake")
 endif()
 
 set(SQLITE_ORM_LIBRARIES sqlite_orm::sqlite_orm)
@@ -15,8 +15,8 @@ if ("${SQLITE_ORM_LIBRARIES}" STREQUAL "")
 	message(FATAL_ERROR "sqlite_orm libraries were not found")
 endif()
 
-if (NOT SqliteOrm_FIND_QUIETLY)
+if (NOT sqlite_orm_FIND_QUIETLY)
   message(STATUS "Found sqlite_orm: ${PACKAGE_PREFIX_DIR}")
 endif()
 
-check_required_components(SqliteOrm)
+check_required_components(sqlite_orm)
