@@ -37,7 +37,8 @@ include(GenerateConfigModule)
 
 set(ProjectName "sqlite_orm")
 
-option(SQLITE_ORM_BUILD_TESTS "Build sqlite_orm unit tests" ON)
+option(SQLITE_ORM_BUILD_TESTS "Build sqlite_orm unit tests" OFF)
+option(SQLITE_ORM_BIILD_EXAMPLES "Build sqlite_orm examples" OFF)
 
 set(sqlite_orm_INCLUDE "${CMAKE_CURRENT_SOURCE_DIR}/include")
 add_library(sqlite_orm INTERFACE)
@@ -75,7 +76,9 @@ if(SQLITE_ORM_BIILD_TESTS AND BUILD_TESTING)
     add_subdirectory(tests)
 endif()
 
-add_subdirectory(examples)
+if(SQLITE_ORM_BIILD_EXAMPLES)
+    add_subdirectory(examples)
+endif()
 
 install(TARGETS sqlite_orm EXPORT "${ProjectName}Targets"
 	INCLUDES DESTINATION "${INCLUDE_INSTALL_DIR}/${ProjectName}"
