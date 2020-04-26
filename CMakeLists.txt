@@ -66,8 +66,8 @@ if (MSVC)
 	endif()
 endif()
 
-ucm_print_flags()
-message(STATUS "CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
+# ucm_print_flags()
+# message(STATUS "CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
 
 # Tests
 include(CTest)
